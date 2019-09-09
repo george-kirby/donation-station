@@ -13,7 +13,7 @@
 
     <nav>
       <% if logged_in? %>
-        You are logged in as <strong><%= @current_user.username %></stron>
+        You are logged in as <strong><%= @current_user.username %></strong>
         <%= link_to "Home", user_home_path %>
         <%= link_to "Log out", logout_path %>  
       <% else %>

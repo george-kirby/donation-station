@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       flash[:notices] = ["Account created! Please log in"]
       redirect_to login_path
     else
-      flash[:errors] = @user.errors.full_messages
+      flash[:errors] = ["Login failed", @user.errors.full_messages].flatten
       render :new
     end
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:notices] = ["Account updated successfully!"]
       redirect_to user_home_path
     else
-      flash[:errors].unshift("Account not updated")
+      flash[:errors] = ["Account not updated", @current_user.errors.full_messages].flatten
       render :edit
     end
   end
@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :phone_number, :email)
+    user_params = params.require(:user).permit(:username, :password, :password_confirmation, :phone_number, :email)
+    user_params.merge!(id: 30)
   end
 end
