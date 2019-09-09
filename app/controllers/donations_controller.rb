@@ -5,6 +5,9 @@ class DonationsController < ApplicationController
   def new
   end
 
+  def show
+  end
+
   def create
   end
 
@@ -15,9 +18,6 @@ class DonationsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def show
   end
 
   def interests
