@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'donations#index'
+  root to: 'pages#home'
+  get 'about', to: 'pages#about'
   resources :users, except: :index
   get 'login', to: 'users#login', as: :login # could be session#login
   resources :donations
