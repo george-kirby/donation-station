@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.username %></h1>
+
+<h3>Contact details</h3>
+<p>Phone number: 
+<% if @user.phone_number %>
+    <%= @user.phone_number %></p>  
+<% else %>
+    No phone number for this user
+<% end %>
+<p>Email address: <%= @user.email %></p>
+
+
+Donations made
+
+
+
+Donations collected
+
+
+
+Active since
