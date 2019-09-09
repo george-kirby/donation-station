@@ -13,8 +13,49 @@
 
     <nav>
       <%= link_to "Login", login_path %>
-      <%= link_to "Register", 'users/new' %>
+      <%= link_to "Register", register_path %>
+      <% if logged_in? %>
+        <%= link_to "Log out", logout_path %>  
+      <% end %>
     </nav>
+
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error_message| %>
+      <h3><%= error_message %></h3>
+      <% end %>
+    <% end %>
+
+    <% if flash[:notices] %>
+      <% flash[:notices].each do |message| %>
+      <h3><%= message %></h3>
+      <% end %>
+    <% end %>
+
     <%= yield %>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h4>Dev stuff</h4>
+
+    <br>
+    Params: <%= params %>
+
+    <br><br>
+    <% if logged_in? %>
+      Current user: <%= @current_user %> (<%= @current_user.username %>)
+    <% else %>
+      Current user: none
+    <% end %>
   </body>
 </html>
