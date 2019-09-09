@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'interests/new'
+  get 'interests/create'
   root to: 'pages#home'
   get 'about', to: 'pages#about'
   get 'login', to: 'sessions#new', as: :login

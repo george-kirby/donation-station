@@ -1,2 +1,9 @@
-<h1>Donations#show</h1>
-<p>Find me in app/views/donations/show.html.erb</p>
+<h1>Your selected donation</h1>
+
+<h2>Title: <%= @donation.title %></h2>
+<p>Description: <%= @donation.description %></p>
+<% if @donation.picture.attached? %>
+ <image src="<%=(url_for(@donation.picture))%>">
+<% end %>
+<%= button_to "Show interest", interests_new_path, :method => "get" %><br>
+<%= link_to 'Edit donation', edit_donation_path %>

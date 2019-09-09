@@ -1,2 +1,7 @@
-<h1>Donations#index</h1>
-<p>Find me in app/views/donations/index.html.erb</p>
+<% @donations.each do |donation| %>
+  <h3>Title: <%= donation.title %></h3>
+  <p>Description: <%= donation.description %></p>
+  <% if donation.picture.attached? %>
+   <image src="<%=(url_for(donation.picture))%>">
+  <% end %>
+<% end %>
