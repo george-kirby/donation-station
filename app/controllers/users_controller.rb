@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: :show
 
 
   def new
@@ -14,15 +14,27 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    flash[:notices] = ["Account created!"]
-    redirect_to login_path
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notices] = ["Account created! Please log in"]
+      redirect_to login_path
+    else
+      flash[:errors] = @user.errors.full_messages
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    if @current_user.update(user_params)
+      flash[:notices] = ["Account updated successfully!"]
+      redirect_to user_home_path
+    else
+      flash[:errors].unshift("Account not updated")
+      render :edit
+    end
   end
 
   def destroy
@@ -35,6 +47,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :phone_number, :email)
+    params.require(:user).permit(:username, :password, :password_confirmation, :phone_number, :email)
   end
 end

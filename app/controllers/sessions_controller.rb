@@ -7,7 +7,9 @@ class SessionsController < ApplicationController
         @username = params[:username]
         @password = params[:password]
         if valid_credentials?
-            session[:user_id] = User.find_by(username: @username).id
+            @user = User.find_by(username: @username)
+            session[:user_id] = @user.id
+            flash[:notices] = ["Welcome, #{@user.username}"]
             redirect_to user_home_path
         else
             flash[:errors] = ["Login failed - invalid credentials"]

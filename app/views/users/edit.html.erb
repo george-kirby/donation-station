@@ -1,2 +1,14 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Edit account</h1>
+
+<%= form_for(@current_user) do |f| %>
+    <%= f.label "Username: " %>
+    <%= f.text_field :username %> <br>
+    <%= f.label "Phone Number: " %>
+    <%= f.text_field :phone_number %> <br>
+    <%= f.label "Password: " %>
+    <%= f.password_field :password %> <br>
+    <%= f.label "Confirm Password: " %>
+    <%= f.password_field :password_confirmation %> <br>
+
+    <%= f.submit "Update account" %>
+<% end %>

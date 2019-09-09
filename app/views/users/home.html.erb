@@ -1,4 +1,6 @@
 <br>
 
-Welcome back, <%= @current_user.username %>
-
+<p><%= link_to "Search donations", donations_path %></p>
+<p><%= link_to "My donations (to be added)", my_donations_path %></p>
+<p><%= link_to "Add a donation", new_donation_path %></p>
+<p><%= link_to "Edit account", edit_user_path %></p>

@@ -17,6 +17,10 @@ class DonationsController < ApplicationController
   def update
   end
 
+  def user_donations
+    
+  end
+
   def destroy
   end
 
