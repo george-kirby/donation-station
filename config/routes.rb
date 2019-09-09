@@ -1,3 +1,21 @@
 Rails.application.routes.draw do
+  get 'users/new'
+  get 'users/create'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/destroy'
+  get 'users/show'
+  get 'donations/index'
+  get 'donations/new'
+  get 'donations/create'
+  get 'donations/edit'
+  get 'donations/update'
+  get 'donations/destroy'
+  get 'donations/show'
+  get 'donations/interests'
+  get 'categories/index'
+  get 'categories/show'
+  get 'locations/index'
+  get 'locations/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
