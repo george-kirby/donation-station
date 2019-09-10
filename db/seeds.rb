@@ -12,32 +12,26 @@ User.destroy_all
 Location.destroy_all
 Category.destroy_all
 
-User.create(username: "geo", password: "p", phone_number: "123")
-User.create(username: "sohaib", password: "p", phone_number: "123")
-User.create(username: "oli", password: "p", phone_number: "123")
-User.create(username: "tegs", password: "p", phone_number: "123")
-User.create(username: "jg", password: "p", phone_number: "123")
-User.create(username: "chris", password: "p", phone_number: "123")
-User.create(username: "aude", password: "p", phone_number: "123")
-User.create(username: "erin", password: "p", phone_number: "123")
-User.create(username: "felipe", password: "p", phone_number: "123")
-User.create(username: "angie", password: "p", phone_number: "123")
-User.create(username: "will", password: "p", phone_number: "123")
-User.create(username: "polly", password: "p", phone_number: "123")
+User.create(username: "geo", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "sohaib", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "oli", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "tegs", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "jg", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "chris", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "aude", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "erin", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "felipe", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "angie", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "will", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
+User.create(username: "polly", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
 
 categories = ["clothing, shoes and accessories", "electronics", "food", "furniture", "home & garden", "pet supplies", "sports & outdoors"]
 
 categories.each {|category| Category.create(name: category)}
 
-locations = ["Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley", 
-    "Camden", "City of London", "City of Westminster", "Croydon", "Ealing", 
-    "Enfield", "Greenwich", "Hackney", "Hammersmith and Fulham", "Haringey", 
-    "Harrow", "Havering", "Hillingdon", "Hounslow", "Islington", 
-    "Kensington and Chelsea", "Kingston upon Thames", "Lambeth", 
-    "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames", 
-    "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth"] 
+location_names = ["Central", "East", "North", "North-West","South-East", "South-West", "West"]
 
-locations.each {|location| Location.create(name: location)}
+location_names.each {|location| Location.create(name: location)}
 
 Donation.create(title: "bike", description: "single-speed", category: Category.all[6], user: User.first, location: Location.all.sample)
 Donation.create(title: "ps4", description: "fully working", category: Category.third, user: User.second, location: Location.all.sample)

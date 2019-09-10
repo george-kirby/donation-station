@@ -1,6 +1,4 @@
-<h1>Your selected donation</h1>
-
-<h2><%= @donation.title %></h2>
+<h1><%= @donation.title %></h1>
 <p><%= @donation.location.name %></p>
 <p>Posted by <strong><%= @donation.user == @current_user ? "you" : (link_to @donation.username, user_path(@donation.user.id))%></strong></p>
 <strong><p>Description: </p></strong><p> <%= @donation.description %></p>
