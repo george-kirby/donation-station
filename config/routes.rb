@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'interests/new'
-  get 'interests/create'
   root to: 'pages#home'
   get 'about', to: 'pages#about'
   get 'login', to: 'sessions#new', as: :login
@@ -12,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :new, :edit]
   get 'user/edit', to: 'users#edit', as: :edit_user
   resources :donations
+  resources :interests, only: [:new, :create, :index]
+  
   get 'donations/interests', to: 'donations#interests', as: :donation_interests
   resources :categories, only: [:index, :show]
   resources :locations, only: [:index, :show]

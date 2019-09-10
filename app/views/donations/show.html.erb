@@ -2,8 +2,26 @@
 
 <h2>Title: <%= @donation.title %></h2>
 <p>Description: <%= @donation.description %></p>
-<% if @donation.picture.attached? %>
- <image src="<%=(url_for(@donation.picture))%>">
+<p>
+    <% if @donation.picture.attached? %>
+     <image src="<%=(url_for(@donation.picture))%>">
+    <% end %>
+</p>
+
+<% if @current_user.interest_shown?(@donation) %>
+
+You are showing interest in this donation. 
+  
+<% else %>
+
+    <% unless @current_user == @donation.user %>
+
+        <%= form_for(@interest) do |f| %>
+                <%= f.hidden_field :donation_id, value: @donation.id %>
+                <%= f.submit "Show interest" %>
+        <% end %>
+        
+    <% end %>
+  
 <% end %>
-<%= button_to "Show interest", interests_new_path, :method => "get" %><br>
 <%= link_to 'Edit donation', edit_donation_path %>

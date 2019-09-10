@@ -11,6 +11,7 @@ class DonationsController < ApplicationController
   end
 
   def show
+    @interest = Interest.new
   end
 
   def create

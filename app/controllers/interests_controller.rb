@@ -1,16 +1,33 @@
 class InterestsController < ApplicationController
   def new
+    byebug
+    
     @interest = Interest.new
   end
 
   def create
-    Interest.create(interest_params)
-    redirect_to donations_path
+    # byebug
+    @donation = Donation.find(interest_params[:donation_id])
+    if logged_in?
+      @interest = Interest.new(interest_params)
+      if @interest.save
+        flash[:notices] = ["Success! You have shown interest in this donation."]
+        redirect_to donation_path(@donation)
+      else
+        flash[:errors] = ["Failed to show interest", @interest.errors.full_messages].flatten
+        redirect_to donation_path(@donation)
+      end
+    else
+      flash[:errors] = ["You must be logged in to show interest in a donation"]
+      redirect_to donation_path(@donation)
+    end
   end
 
   private
 
   def interest_params
-    params.require(:interest).permit(:user_id, :donation_id)
+    interest_params = params.require(:interest).permit(:donation_id)
+    interest_params.merge!(user_id: @current_user.id) if logged_in?
+    interest_params
   end
 end
