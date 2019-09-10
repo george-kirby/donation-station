@@ -11,7 +11,8 @@ class InterestsController < ApplicationController
     if logged_in?
       @interest = Interest.new(interest_params)
       if @interest.save
-        flash[:notices] = ["Success! You have shown interest in this donation."]
+        flash[:notices] = ["Success! You have shown interest in this donation.", 
+        "You and the item owner can see each other's phone numbers."]
         redirect_to donation_path(@donation)
       else
         flash[:errors] = ["Failed to show interest", @interest.errors.full_messages].flatten

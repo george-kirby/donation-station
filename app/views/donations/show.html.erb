@@ -12,6 +12,9 @@
 <% if logged_in? && @current_user.interest_shown?(@donation) %>
 
     You are showing interest in this donation. <br>
+
+    <p>Contact <strong><%= @donation.username %></strong> on <strong><%= @donation.phone_number %></strong> to enquire about this item or arrange a collection.</p>
+    <br>
     <%= form_tag(remove_interest_path) %>
         <%= hidden_field_tag :donation_id, @donation.id %>
         <%= submit_tag "Remove interest" %>
@@ -28,6 +31,21 @@
   
 <% end %> <br>
 
-<% if @donation.user == @current_user %>
+<% if @donation.interests.empty? %>
+    No users have shown interest in this donation yet.
+<% elsif @donation.interests.count == 1 %>
+    1 user is currently showing interest in this donation.
+<% else %>
+    <%= @donation.interests.count %> users are currently showing interest in this donation.
+<% end %>
+
+<% if @donation.user == @current_user && !@donation.interests.empty? %>
+    <p>Contact these interested users to arrange a collection:</p>
+    <ul>
+        <% @donation.interests.each do |interest| %>
+          <li><%= interest.username %> - <%= interest.user_phone_number %></li>
+        <% end %>
+    </ul>
+    <br>
     <%= link_to 'Edit donation', edit_donation_path %>
 <% end %>

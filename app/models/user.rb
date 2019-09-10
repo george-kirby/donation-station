@@ -16,4 +16,8 @@ class User < ApplicationRecord
         Interest.all.any?{|interest| interest.donation == donation && interest.user == self}
     end
 
+    def my_donations
+        Donation.all.select{|donation| donation.user == self}
+    end
+
 end

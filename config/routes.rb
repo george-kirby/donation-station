@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: :logout
   get 'register', to: 'users#new', as: :register
   get 'users/home', to: 'users#home', as: :user_home
-  get 'user/my-donations', to: 'donations#user_donations', as: :my_donations
+  get 'user/my-donations', to: 'donations#current_user_donations', as: :my_donations
   resources :users, except: [:index, :new, :edit]
   get 'user/edit', to: 'users#edit', as: :edit_user
   resources :donations

@@ -38,8 +38,8 @@ class DonationsController < ApplicationController
     end
   end
 
-  def user_donations
-    
+  def current_user_donations
+    @donations = @current_user.my_donations
   end
 
   def destroy

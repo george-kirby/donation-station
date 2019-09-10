@@ -15,4 +15,8 @@ class Donation < ApplicationRecord
     self.user.username
   end
 
+  def phone_number
+    self.user.phone_number
+  end
+
 end
