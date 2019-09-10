@@ -12,18 +12,18 @@ User.destroy_all
 Location.destroy_all
 Category.destroy_all
 
-User.create(username: "geo", password: "p", phone_number: "123", email: nil)
-User.create(username: "sohaib", password: "p", phone_number: "123", email: nil)
-User.create(username: "oli", password: "p", phone_number: "123", email: nil)
-User.create(username: "tegs", password: "p", phone_number: "123", email: nil)
-User.create(username: "jg", password: "p", phone_number: "123", email: nil)
-User.create(username: "chris", password: "p", phone_number: "123", email: nil)
-User.create(username: "aude", password: "p", phone_number: "123", email: nil)
-User.create(username: "erin", password: "p", phone_number: "123", email: nil)
-User.create(username: "felipe", password: "p", phone_number: "123", email: nil)
-User.create(username: "angie", password: "p", phone_number: "123", email: nil)
-User.create(username: "will", password: "p", phone_number: "123", email: nil)
-User.create(username: "polly", password: "p", phone_number: "123", email: nil)
+User.create(username: "geo", password: "p", phone_number: "123")
+User.create(username: "sohaib", password: "p", phone_number: "123")
+User.create(username: "oli", password: "p", phone_number: "123")
+User.create(username: "tegs", password: "p", phone_number: "123")
+User.create(username: "jg", password: "p", phone_number: "123")
+User.create(username: "chris", password: "p", phone_number: "123")
+User.create(username: "aude", password: "p", phone_number: "123")
+User.create(username: "erin", password: "p", phone_number: "123")
+User.create(username: "felipe", password: "p", phone_number: "123")
+User.create(username: "angie", password: "p", phone_number: "123")
+User.create(username: "will", password: "p", phone_number: "123")
+User.create(username: "polly", password: "p", phone_number: "123")
 
 categories = ["clothing, shoes and accessories", "electronics", "food", "furniture", "home & garden", "pet supplies", "sports & outdoors"]
 
