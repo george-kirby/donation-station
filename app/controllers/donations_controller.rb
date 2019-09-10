@@ -14,16 +14,27 @@ class DonationsController < ApplicationController
   end
 
   def create
-    donation = Donation.create(donation_params)
-    redirect_to donation
+    @donation = Donation.new(donation_params)
+    if @donation.save
+      flash[:notices] = ["Donation created! Thank you"]
+      redirect_to donation_path(@donation)
+    else
+      flash[:errors] = ["Donation not created", @donation.errors.full_messages].flatten
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @donation.update(donation_params)
-    redirect_to @donation
+    if @donation.update(donation_params)
+      flash[:notices] = ["Donation updated successfully!"]
+      redirect_to @donation
+    else
+      flash[:errors] = ["Donation not updated", @donation.errors.full_messages].flatten
+      render :edit
+    end
   end
 
   def user_donations
@@ -45,6 +56,7 @@ class DonationsController < ApplicationController
   end
 
   def donation_params
-    params.require(:donation).permit(:title, :description, :user_id, :category_id, :location_id, :picture)
+    donation_params = params.require(:donation).permit(:title, :description, :category_id, :location_id, :picture)
+    donation_params.merge!(user_id: @current_user.id)
   end
 end

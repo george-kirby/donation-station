@@ -1,21 +1,5 @@
 <h1>Edit donation</h1>
 
-<%= form_for @donation do |f| %>
-<ul>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %><br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description %><br>
-  <%= f.label :user_id %><br>
-  <%= f.number_field :user_id %><br>
-  <%= f.label :location_id %><br>
-  <%= f.number_field :location_id %><br>
-  <%= f.label :category_id %><br>
-  <%= f.collection_select :category_id, Category.all, :id, :name %><br>
-  <%= f.label :picture %><br>
-  <%= f.file_field :picture %><br>
-  <%= f.submit %>
-</ul>
-<% end %>
+<%= render "form" %>
 
 <%= link_to 'Delete donation', @donation, {method: 'delete', data: {confirm: 'Are you sure you want to delete this donation?'}}  %>

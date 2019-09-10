@@ -48,6 +48,5 @@ class UsersController < ApplicationController
 
   def user_params
     user_params = params.require(:user).permit(:username, :password, :password_confirmation, :phone_number, :email)
-    user_params.merge!(id: 30)
   end
 end
