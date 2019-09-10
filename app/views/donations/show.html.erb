@@ -1,8 +1,9 @@
 <h1>Your selected donation</h1>
 
 <h2><%= @donation.title %></h2>
+<p><%= @donation.location.name %></p>
 <p>Posted by <strong><%= @donation.user == @current_user ? "you" : @donation.username %></strong></p>
-<p>Description: <%= @donation.description %></p>
+<u><p>Description: </p></u><p> <%= @donation.description %></p>
 <p>
     <% if @donation.picture.attached? %>
      <image src="<%=(url_for(@donation.picture))%>">
@@ -13,7 +14,7 @@
 
     You are showing interest in this donation. <br>
 
-    <p>Contact <strong><%= @donation.username %></strong> on <strong><%= @donation.phone_number %></strong> to enquire about this item or arrange a collection.</p>
+    <p>Contact <strong><%= link_to @donation.username, user_path(@donation.user.id) %></strong> on <strong><%= @donation.phone_number %></strong> to enquire about this item or arrange a collection.</p>
     <br>
     <%= form_tag(remove_interest_path) %>
         <%= hidden_field_tag :donation_id, @donation.id %>
@@ -40,7 +41,7 @@
         <p>Contact these interested users to arrange a collection:</p>
         <ul>
             <% @donation.interests.each do |interest| %>
-            <li><%= interest.username %> - <%= interest.user_phone_number %></li>
+            <li><%= link_to interest.username, user_path(interest.user.id) %> - <%= interest.user_phone_number %></li>
             <% end %>
         </ul>
         <br>

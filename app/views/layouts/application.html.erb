@@ -40,30 +40,5 @@
     <% end %>
 
     <%= yield %>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <h4>Dev stuff</h4>
-
-    <br>
-    Params: <%= params %>
-
-    <br><br>
-    <% if logged_in? %>
-      Current user: <%= @current_user %> (<%= @current_user.username %>)
-    <% else %>
-      Current user: none
-    <% end %>
   </body>
 </html>
