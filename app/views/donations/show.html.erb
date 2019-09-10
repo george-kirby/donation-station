@@ -2,8 +2,8 @@
 
 <h2><%= @donation.title %></h2>
 <p><%= @donation.location.name %></p>
-<p>Posted by <strong><%= @donation.user == @current_user ? "you" : @donation.username %></strong></p>
-<u><p>Description: </p></u><p> <%= @donation.description %></p>
+<p>Posted by <strong><%= @donation.user == @current_user ? "you" : (link_to @donation.username, user_path(@donation.user.id))%></strong></p>
+<strong><p>Description: </p></strong><p> <%= @donation.description %></p>
 <p>
     <% if @donation.picture.attached? %>
      <image src="<%=(url_for(@donation.picture))%>">

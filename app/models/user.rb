@@ -28,4 +28,8 @@ class User < ApplicationRecord
         Donation.all.select{|donation| donation.user == self}
     end
 
+    def contact_permission?(user)
+        Interest.all.any?{|interest| interest.donation.user == user && interest.user == self}
+    end
+
 end

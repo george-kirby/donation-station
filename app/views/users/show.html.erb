@@ -2,18 +2,18 @@
 
 <h3>Contact details</h3>
 <p>Phone number: 
-<% if @user.phone_number %>
-    <%= @user.phone_number %></p>  
-<% else %>
-    No phone number for this user
-<% end %>
+    <% if logged_in? && @current_user.contact_permission?(@user) %>
+        <%= @user.phone_number %>
+    <% else %>
+        XXXXXXXXXXX
+        <p>Show interest in one of <strong><%= @user.username %></strong>'s donations to see their phone number.</p>
+    <% end %>
+
 <br>
-<p>Donations made: </p>
+<p>Donations: </p>
 
+<% @user.my_donations.each do |donation| %>
+  <p><%= link_to donation.title, donation_path(donation) %></p>
+<% end %>
 
-
-<p>Donations collected: </p>
-
-
-
-<p>Active since: </p>
+<p>Active since <%= @user.created_at.strftime("%B %Y") %> </p>
