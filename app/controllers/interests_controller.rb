@@ -23,6 +23,13 @@ class InterestsController < ApplicationController
     end
   end
 
+  def delete
+    @interest = Interest.all.find{|interest| interest.donation_id == params[:donation_id].to_i && interest.user == @current_user}
+    @interest.destroy
+    flash[:notices] = ["Interest removed."]
+    redirect_to donation_path(params[:donation_id])
+  end
+
   private
 
   def interest_params

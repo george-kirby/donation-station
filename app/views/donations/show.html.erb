@@ -9,10 +9,12 @@
     <% end %>
 </p>
 
-<% if @current_user.interest_shown?(@donation) %>
+<% if logged_in? && @current_user.interest_shown?(@donation) %>
 
-You are showing interest in this donation. 
-  
+    You are showing interest in this donation. <br>
+    <%= form_tag(remove_interest_path) %>
+        <%= hidden_field_tag :donation_id, @donation.id %>
+        <%= submit_tag "Remove interest" %>
 <% else %>
 
     <% unless @current_user == @donation.user %>

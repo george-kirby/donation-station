@@ -19,6 +19,7 @@
         <%= link_to "Add a donation", new_donation_path %>
         <%= link_to "Log out", logout_path %>  
       <% else %>
+        <%= link_to "Homepage", root_path %>
         <%= link_to "Login", login_path %>
         <%= link_to "Register", register_path %>
       <% end %>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'user/edit', to: 'users#edit', as: :edit_user
   resources :donations
   resources :interests, only: [:new, :create, :index]
+  post 'interest/remove', to: 'interests#delete', as: :remove_interest
   
   get 'donations/interests', to: 'donations#interests', as: :donation_interests
   resources :categories, only: [:index, :show]
