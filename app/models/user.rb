@@ -12,4 +12,8 @@ class User < ApplicationRecord
         self.all.map{|user| user.username}
     end
 
+    def interest_shown?(donation)
+        Interest.all.any?{|interest| interest.donation == donation && interest.user == self}
+    end
+
 end

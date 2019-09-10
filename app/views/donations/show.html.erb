@@ -1,6 +1,7 @@
 <h1>Your selected donation</h1>
 
 <h2>Title: <%= @donation.title %></h2>
+<p>User: <%= @donation.username %></p>
 <p>Description: <%= @donation.description %></p>
 <p>
     <% if @donation.picture.attached? %>
@@ -23,5 +24,8 @@ You are showing interest in this donation.
         
     <% end %>
   
+<% end %> <br>
+
+<% if @donation.user == @current_user %>
+    <%= link_to 'Edit donation', edit_donation_path %>
 <% end %>
-<%= link_to 'Edit donation', edit_donation_path %>

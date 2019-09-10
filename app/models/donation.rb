@@ -11,4 +11,8 @@ class Donation < ApplicationRecord
   validates :category, presence: true
   validates :location, presence: true
 
+  def username
+    self.user.username
+  end
+
 end
