@@ -23,29 +23,41 @@
     <% unless @current_user == @donation.user %>
 
         <%= form_for(@interest) do |f| %>
-                <%= f.hidden_field :donation_id, value: @donation.id %>
-                <%= f.submit "Show interest" %>
+            <%= f.hidden_field :donation_id, value: @donation.id %>
+            <%= f.submit "Show interest" %>
         <% end %>
         
     <% end %>
   
 <% end %> <br>
 
-<% if @donation.interests.empty? %>
-    No users have shown interest in this donation yet.
-<% elsif @donation.interests.count == 1 %>
-    1 user is currently showing interest in this donation.
-<% else %>
-    <%= @donation.interests.count %> users are currently showing interest in this donation.
-<% end %>
+<br>
+<% if @donation.user == @current_user %>
 
-<% if @donation.user == @current_user && !@donation.interests.empty? %>
-    <p>Contact these interested users to arrange a collection:</p>
-    <ul>
-        <% @donation.interests.each do |interest| %>
-          <li><%= interest.username %> - <%= interest.user_phone_number %></li>
-        <% end %>
-    </ul>
-    <br>
-    <%= link_to 'Edit donation', edit_donation_path %>
+    <% if @donation.interests.empty? %>
+        No users have shown interest in this donation yet.
+    <% else %>
+        <p>Contact these interested users to arrange a collection:</p>
+        <ul>
+            <% @donation.interests.each do |interest| %>
+            <li><%= interest.username %> - <%= interest.user_phone_number %></li>
+            <% end %>
+        </ul>
+        <br>
+        <%= link_to 'Edit donation', edit_donation_path %>
+    <% end %>
+
+<% else %>
+
+    <% if @donation.interests.empty? %>
+        No users have shown interest in this donation yet.
+    <% elsif @donation.other_interests(@current_user).empty? %>
+        No other users have shown interest in this donation yet.
+    <% elsif @donation.other_interests(@current_user).count == 1 %>
+        1 other user is currently showing interest in this donation.
+    <% else %>
+        <%= @donation.other_interests(@current_user).count %> other users are currently showing interest in this donation.
+    <% end %>
+    
 <% end %>
+    

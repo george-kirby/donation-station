@@ -19,4 +19,8 @@ class Donation < ApplicationRecord
     self.user.phone_number
   end
 
+  def other_interests(user)
+    interests.select{|interest| interest.user != user}
+  end
+
 end
