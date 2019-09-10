@@ -6,14 +6,11 @@ class DonationsController < ApplicationController
     @donations = Donation.all
   end
 
-
   def search_results
     @donations = Donation.where("title || description LIKE ?", "%#{params[:q]}%")
-
     unless donation_params[:location_id] == ""
       @donations = @donations.select {|donation| donation.location_id == donation_params[:location_id].to_i}
     end
-
     unless donation_params[:category_id] == ""
       @donations = @donations.select {|donation| donation.category_id == donation_params[:category_id].to_i}
     end
@@ -78,7 +75,6 @@ class DonationsController < ApplicationController
   end
 
   def donation_params
-    donation_params = params.require(:donation).permit(:title, :description, :category_id, :location_id, :picture)
-    donation_params.merge!(user_id: @current_user.id)
+    donation_params = params.require(:donation).permit(:title, :description, :category_id, :location_id, :user_id, :picture)
   end
 end
