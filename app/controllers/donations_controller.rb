@@ -6,6 +6,27 @@ class DonationsController < ApplicationController
     @donations = Donation.all
   end
 
+
+  def search_results
+    @donations = Donation.where("title || description LIKE ?", "%#{params[:q]}%")
+
+    unless donation_params[:location_id] == ""
+      @donations = @donations.select {|donation| donation.location_id == donation_params[:location_id].to_i}
+    end
+
+    unless donation_params[:category_id] == ""
+      @donations = @donations.select {|donation| donation.category_id == donation_params[:category_id].to_i}
+    end
+
+    @donations
+
+    render :index
+  end
+
+  def search_by_location
+    @donations = Donation.all
+  end
+
   def new
     @donation = Donation.new
   end

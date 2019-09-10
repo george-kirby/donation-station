@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get 'donations/search_results', to: 'donations#search_results', as: :search_results
+  get 'donations/search_by_location/', to: 'donations#search_by_location'
   get 'about', to: 'pages#about'
   get 'login', to: 'sessions#new', as: :login
   post 'login', to: 'sessions#create', as: :create_session
