@@ -5,4 +5,12 @@ class Donation < ApplicationRecord
   has_many :interests
   has_many :users, through: :interests
   has_one_attached :picture
+
+  # def self.search(search)
+  #   if search
+  #     @donations = Donation.where('title LIKE ?', "%#{params[:search]}%")
+  #   else
+  #     @donations = Donation.all
+  #   end
+  # end
 end
