@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         @username = params[:username]
         @password = params[:password]
         if valid_credentials?
-            session[:username] = @username
+            session[:user_id] = User.find_by(username: @username).id
             flash[:notices] = ["Welcome, #{@username}"]
             redirect_to user_home_path
         else
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete(:username)
+        session.delete(:user_id)
         redirect_to root_path
     end
 
