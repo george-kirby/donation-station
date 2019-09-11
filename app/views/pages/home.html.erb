@@ -1,5 +1,15 @@
 <h1>Welcome to Donation Station</h1>
-<ul>
-  <li><%= link_to "Search donations", donations_path %></li>
-  <li><%= link_to "About", about_path %></li>
-</ul>
+
+<i><p>The website for giving lovers</p></i>
+<br>
+<p><%= link_to "Search donations", donations_path %></p>
+
+<p> <strong><%= @location_with_most_donations.name %> London</strong> is the location with the most donations (<%= @location_with_most_donations.donations_count %>) </p>
+<p> <strong><%= @category_with_most_donations.name.capitalize %></strong> is the category with the most donations (<%= @category_with_most_donations.donations_count %>) </p>
+<p> <strong><%= @user_with_most_donations.username %></strong> is the user with the most donations (<%= @user_with_most_donations.donations_count %>) </p>
+
+<!-- user with most total interests for their donations -->
+
+<p><%= link_to "About", about_path %></p>
+
+

@@ -32,4 +32,12 @@ class User < ApplicationRecord
         Interest.all.any?{|interest| interest.donation.user == user && interest.user == self}
     end
 
+    def donations_count
+        my_donations.count
+    end
+
+    def self.most_donations
+        all.max_by{|user| user.donations_count}
+    end
+
 end

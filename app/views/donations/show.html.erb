@@ -1,6 +1,6 @@
 <h1><%= @donation.title %></h1>
 <p><%= @donation.location.name %></p>
-<p>Posted by <strong><%= @donation.user == @current_user ? "you" : (link_to @donation.username, user_path(@donation.user.id))%></strong></p>
+<p>Posted by <strong><%= @donation.user == @current_user ? "you" : (link_to @donation.username, user_path(@donation.user.id))%></strong>, in <strong><%= @donation.category.name %></strong></p>
 <strong><p>Description: </p></strong><p> <%= @donation.description %></p>
 <p>
     <% if @donation.picture.attached? %>
