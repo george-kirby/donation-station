@@ -5,10 +5,10 @@
     <div class="card" style="width: 25rem;">
         <img src="<%=(url_for(donation.picture))%>" class="card-img-top" alt="donation_pic" width=500>
         <div class="card-body">
-        <h5 class="card-title"><%= link_to donation.title, donation_path(donation) %></h5>
+        <h5 class="card-title"><%= donation.title %></h5>
         <p><%= donation.location.name %> - posted by <strong><%= donation.username %></strong></p>
         <p class="card-text"><%= donation.description %></p>
-        <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
+        <a href="<%= donation_path(donation) %>" class="stretched-link"></a>
         </div>
     </div>
     </div>
