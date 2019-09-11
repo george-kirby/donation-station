@@ -1,9 +1,9 @@
 <h1>Your donations</h1>
 
-<% @donations.each do |donation| %>
-  <h3>Title: <%= link_to donation.title, donation_path(donation) %></h3>
-  <p>Description: <%= donation.description %></p>
-  <% if donation.picture.attached? %>
-   <image src="<%=(url_for(donation.picture))%>">
-  <% end %>
+<% if @donations.empty? %>
+    <br>
+    <p>You haven't shown interest in any donations yet.</p>
+    <p><%= link_to "Add a donation", new_donation_path %></p>
+<% else %>
+  <%= render "donations_display" %>
 <% end %>

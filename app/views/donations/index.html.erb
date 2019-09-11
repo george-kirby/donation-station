@@ -10,19 +10,5 @@
 <% if @donations.empty? %>
   <p>Sorry, there are currently no donations matching your search terms!</p>
 <% else %>
-  <div class="row">
-    <% @donations.each do |donation| %>
-      <div class="col-sm-4">
-        <div class="card" style="width: 25rem;">
-          <img src="<%=(url_for(donation.picture))%>" class="card-img-top" alt="donation_pic" width=500>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to donation.title, donation_path(donation) %></h5>
-            <p><%= donation.location.name %> - posted by <strong><%= donation.username %></strong></p>
-            <p class="card-text"><%= donation.description %></p>
-            <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render "donations_display" %>
 <% end %>

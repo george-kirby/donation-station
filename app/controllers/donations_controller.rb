@@ -60,6 +60,10 @@ class DonationsController < ApplicationController
     @donations = @current_user.my_donations
   end
 
+  def current_user_interests
+    @donations = @current_user.donations_interested_in
+  end
+
   def destroy
     @donation.interests.destroy_all
     @donation.destroy

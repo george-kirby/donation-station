@@ -1,0 +1,9 @@
+<h1>Donations you are interested in</h1>
+
+<% if @donations.empty? %>
+    <br>
+    <p>You haven't shown interest in any donations yet. </p>
+    <p><%= link_to "Search donations", donations_path %></p>
+<% else %>
+  <%= render "donations_display" %>
+<% end %>
