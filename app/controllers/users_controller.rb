@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @donations = @user.my_donations
   end
 
   def create

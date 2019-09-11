@@ -23,3 +23,8 @@
 .col-sm-4 {
     height: 500px;
 }
+
+.m-3 {
+    margin-top: 15px !important;
+    margin-left: 50px !important;
+}

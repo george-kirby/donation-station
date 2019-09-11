@@ -9,10 +9,13 @@
     <% end %>
 
 <br>
-<p>Donations: </p>
+<h5>Donations: </h5>
 
-<% @user.my_donations.each do |donation| %>
-  <p><%= link_to donation.title, donation_path(donation) %></p>
+<% if @user.my_donations.empty? %>
+    This user hasn't posted any donations yet.
+<% else %>
+  <%= render "donations/donations_display" %>
 <% end %>
 
+<br> <br>
 <p>Active since <%= @user.created_at.strftime("%B %Y") %> </p>

@@ -34,18 +34,17 @@
 
     <% if flash[:errors] %>
       <% flash[:errors].each do |error_message| %>
-      <div class="alert alert-danger" role="alert"><%= error_message %></div>
+      <div class="alert alert-danger w-50" role="alert"><%= error_message %></div>
       <% end %>
       <br>
     <% end %>
 
     <% if flash[:notices] %>
       <% flash[:notices].each do |message| %>
-      <div class="alert alert-success" role="alert"><%= message %></div>
+      <div class="alert alert-success w-50" role="alert"><%= message %></div>
       <% end %>
       <br>
     <% end %>
-
 
     <%= yield %>
   </body>

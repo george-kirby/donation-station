@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         if valid_credentials?
             session[:user_id] = User.find_by(username: @username).id
             flash[:notices] = ["Welcome, #{@username}"]
-            redirect_to user_home_path
+            redirect_to root_path
         else
             flash[:errors] = ["Login failed - invalid credentials"]
             redirect_to login_path

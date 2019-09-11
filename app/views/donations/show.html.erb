@@ -4,15 +4,14 @@
 <strong><p>Description: </p></strong><p> <%= @donation.description %></p>
 <p>
     <% if @donation.picture.attached? %>
-     <img src="<%=(url_for(@donation.picture))%>" height=500>
+     <img src="<%=(url_for(@donation.picture))%>" height=400>
     <% end %>
 </p>
 
 <% if logged_in? && @current_user.interest_shown?(@donation) %>
 
-    You are showing interest in this donation. <br>
-
-    <p>Contact <strong><%= link_to @donation.username, user_path(@donation.user.id) %></strong> on <strong><%= @donation.phone_number %></strong> to enquire about this item or arrange a collection.</p>
+    <div class="alert alert-success w-50" role="alert">You are showing interest in this donation.</div>
+    <div class="alert alert-success w-50" role="alert">Contact <strong><%= link_to @donation.username, user_path(@donation.user.id) %></strong> on <strong><%= @donation.phone_number %></strong> to enquire about this item or arrange a collection.</div>
     <br>
     <%= form_tag(remove_interest_path) %>
         <%= hidden_field_tag :donation_id, @donation.id %>
@@ -37,7 +36,7 @@
     <% if @donation.interests.empty? %>
         No users have shown interest in this donation yet.
     <% else %>
-        <p>Contact these interested users to arrange a collection:</p>
+        <div class="alert alert-success w-50" role="alert">Contact these interested users to arrange a collection:</div>
         <ul>
             <% @donation.interests.each do |interest| %>
             <li><%= link_to interest.username, user_path(interest.user.id) %> - <%= interest.user_phone_number %></li>

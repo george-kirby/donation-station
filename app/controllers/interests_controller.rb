@@ -12,7 +12,7 @@ class InterestsController < ApplicationController
       @interest = Interest.new(interest_params)
       if @interest.save
         flash[:notices] = ["Success! You have shown interest in this donation.", 
-        "You and the item owner can now see each other's phone numbers."]
+        "You and the item owner can see each other's phone numbers."]
         redirect_to donation_path(@donation)
       else
         flash[:errors] = ["Failed to show interest", @interest.errors.full_messages].flatten
@@ -27,7 +27,7 @@ class InterestsController < ApplicationController
   def delete
     @interest = Interest.all.find{|interest| interest.donation_id == params[:donation_id].to_i && interest.user == @current_user}
     @interest.destroy
-    flash[:notices] = ["Interest removed.", "You and the item owner can no longer see each other's phone numbers."]
+    flash[:notices] = ["Interest removed."]
     redirect_to donation_path(params[:donation_id])
   end
 

@@ -33,7 +33,7 @@ class User < ApplicationRecord
     end
 
     def contact_permission?(user)
-        Interest.all.any?{|interest| interest.donation.user == user && interest.user == self}
+        Interest.all.any?{|interest| (interest.donation.user == user && interest.user == self) || (interest.donation.user == self && interest.user == user)}
     end
 
     def donations_count
