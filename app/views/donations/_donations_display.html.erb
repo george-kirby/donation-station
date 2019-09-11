@@ -2,7 +2,7 @@
 <div class="row">
 <% @donations.each do |donation| %>
     <div class="col-sm-4">
-    <div class="card" style="width: 25rem;">
+    <div class="card" style="width: 25rem; height: 30rem">
         <img src="<%=(url_for(donation.picture))%>" class="card-img-top" alt="donation_pic" width=500>
         <div class="card-body">
         <h5 class="card-title"><%= donation.title %></h5>

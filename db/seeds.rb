@@ -36,7 +36,7 @@ location_names.each {|location| Location.create(name: location)}
 bike = Donation.create(title: "bike", description: "single-speed, red lights don't apply", category: Category.all[5], user: geo, location: Location.all[1])
 mugs = Donation.create(title: "mugs", description: "A lovely pair of coffee mugs. Great for your 15th and 16th coffees of the day at Flatiron.", category: Category.fifth, user: tegs, location: Location.all[5])
 bed = Donation.create(title: "bed", description: "A grand four-poster bed. Not needed for sleep anymore as I'm studying at Flatiron", category: Category.fourth, user: angie, location: Location.all[2])
-desk = Donation.create(title: "desk", description: "Cool mahogany desk - careful though, you'll get stuck at it doing rails labs", category: Category.fourth, user: geo, location: Location.all[1])
+desk = Donation.create(title: "desk", description: "Cool mahogany desk - careful though, you'll get stuck at it doing Rails labs", category: Category.fourth, user: geo, location: Location.all[1])
 beans = Donation.create(title: "beans", description: "tin of Heinz beans. Sorry, BEANZ", category: Category.third, user: oli, location: Location.all[5])
 trousers_with_holes = Donation.create(title: "old trousers", description: "so many holes", category: Category.first, user: aude, location: Location.all[3])
 soup = Donation.create(title: "soup", description: "4 cans of chicken noodle soup. Rails provides me with all the nourishment I need now", category: Category.third, user: oli, location: Location.all[5])
@@ -59,7 +59,7 @@ bed.picture.attach(io: File.open('/Users/flatiron/Downloads/bed.jpeg'), filename
 
 20.times do 
     interest = Interest.new(donation: Donation.all.sample)
-    other_users = User.all.select{|user| user != interest.donation.user}
+    other_users = User.all.select{|user| user != interest.donation.user && !interest.donation.interests.map{|i|i.user}.include?(user)}
     interest.user = other_users.sample
     interest.save
 end
