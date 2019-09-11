@@ -5,11 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="m-3">
 
     <nav>
       <% if logged_in? %>
@@ -29,13 +30,13 @@
 
     <% if flash[:errors] %>
       <% flash[:errors].each do |error_message| %>
-      <h3><%= error_message %></h3>
+      <div class="alert alert-danger" role="alert"><%= error_message %></div>
       <% end %>
     <% end %>
 
     <% if flash[:notices] %>
       <% flash[:notices].each do |message| %>
-      <h3><%= message %></h3>
+      <div class="alert alert-success" role="alert"><%= message %></div>
       <% end %>
     <% end %>
 
