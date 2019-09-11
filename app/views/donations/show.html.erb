@@ -4,7 +4,7 @@
 <strong><p>Description: </p></strong><p> <%= @donation.description %></p>
 <p>
     <% if @donation.picture.attached? %>
-     <image src="<%=(url_for(@donation.picture))%>" width=500>
+     <image src="<%=(url_for(@donation.picture))%>" height=500>
     <% end %>
 </p>
 
@@ -31,6 +31,7 @@
 <% end %> <br>
 
 <br>
+    
 <% if @donation.user == @current_user %>
 
     <% if @donation.interests.empty? %>
@@ -44,19 +45,18 @@
         </ul>
         <br>
     <% end %>
-    <p><%= link_to 'Edit donation', edit_donation_path %></p>
+<p><%= link_to 'Edit donation', edit_donation_path %></p>
 
 <% else %>
 
     <% if @donation.interests.empty? %>
         No users have shown interest in this donation yet.
     <% elsif @donation.other_interests(@current_user).empty? %>
-        No other users have shown interest in this donation yet.
+        No <%= " other" if logged_in? %> users have shown interest in this donation yet.
     <% elsif @donation.other_interests(@current_user).count == 1 %>
-        1 other user is currently showing interest in this donation.
+        1 <%= " other" if logged_in? %> user is currently showing interest in this donation.
     <% else %>
-        <%= @donation.other_interests(@current_user).count %> other users are currently showing interest in this donation.
+        <%= @donation.other_interests(@current_user).count %><%= " other" if logged_in? %> users are currently showing interest in this donation.
     <% end %>
     
 <% end %>
-    

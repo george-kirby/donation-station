@@ -23,4 +23,8 @@ class Donation < ApplicationRecord
     interests.select{|interest| interest.user != user}
   end
 
+  def self.most_interests
+    all.max_by{|donation| donation.interests.count}
+  end
+
 end

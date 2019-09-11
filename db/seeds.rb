@@ -43,7 +43,7 @@ soup = Donation.create(title: "soup", description: "4 cans of chicken noodle sou
 ps4 = Donation.create(title: "ps4", description: "fully working", category: Category.second, user: sohaib, location: Location.all[4])
 bench = Donation.create(title: "bench", description: "beautiful garden bench", category: Category.fifth, user: joaquin, location: Location.all[5])
 trampoline = Donation.create(title: "trampoline", description: "bouncy", category: Category.all[4], user: erin, location: Location.all[0])
-freezer = Donation.create(title: "freezer", description: "useful for storing body parts", category: Category.all[5], user: polly, location: Location.all[4])
+freezer = Donation.create(title: "freezer", description: "useful for storing the bodies", category: Category.all[4], user: polly, location: Location.all[4])
 
 bike.picture.attach(io: File.open('/Users/flatiron/Downloads/bike.png'), filename: 'bike.png') 
 ps4.picture.attach(io: File.open('/Users/flatiron/Downloads/ps4.jpeg'), filename: 'ps4.jpeg') 
@@ -56,3 +56,10 @@ soup.picture.attach(io: File.open('/Users/flatiron/Downloads/soup.jpg'), filenam
 bench.picture.attach(io: File.open('/Users/flatiron/Downloads/bench.jpeg'), filename: 'bench.jpeg') 
 trampoline.picture.attach(io: File.open('/Users/flatiron/Downloads/trampoline.jpeg'), filename: 'trampoline.jpeg')
 bed.picture.attach(io: File.open('/Users/flatiron/Downloads/bed.jpeg'), filename: 'bed.jpeg')
+
+20.times do 
+    interest = Interest.new(donation: Donation.all.sample)
+    other_users = User.all.select{|user| user != interest.donation.user}
+    interest.user = other_users.sample
+    interest.save
+end

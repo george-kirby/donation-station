@@ -1,6 +1,5 @@
-<h1><%= @user.username %></h1>
+<h1>User: <%= @user.username %></h1>
 
-<h3>Contact details</h3>
 <p>Phone number: 
     <% if logged_in? && @current_user.contact_permission?(@user) %>
         <%= @user.phone_number %>

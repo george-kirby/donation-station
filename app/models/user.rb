@@ -40,4 +40,16 @@ class User < ApplicationRecord
         all.max_by{|user| user.donations_count}
     end
 
+    def my_donations_with_interest
+        my_donations.select{|donation| !donation.interests.empty?}
+    end
+
+    def interests_received
+        Interest.all.select{|interest| interest.donation.user == self}
+    end
+
+    def self.most_interests_received
+        all.max_by{|user| user.interests_received.count}
+    end
+
 end
