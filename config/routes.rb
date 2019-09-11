@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create', as: :create_session
   get 'logout', to: 'sessions#destroy', as: :logout
   get 'register', to: 'users#new', as: :register
-  get 'users/home', to: 'users#home', as: :user_home
   get 'user/my-donations', to: 'donations#current_user_donations', as: :my_donations
   get 'user/my-interests', to: 'donations#current_user_interests', as: :my_interests
   resources :users, except: [:index, :new, :edit]
