@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def home
+    session.delete(:donation_id)
+    
     @trending_donation = Donation.most_interests
     @trending_user = User.most_interests_received
     @location_with_most_donations = Location.most_donations

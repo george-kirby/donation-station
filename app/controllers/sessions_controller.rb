@@ -21,7 +21,6 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        byebug
         session.delete(:donation_id)
         session.delete(:user_id)
         flash[:notices] = ["Logged out successfully"]

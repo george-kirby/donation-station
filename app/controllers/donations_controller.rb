@@ -35,7 +35,6 @@ class DonationsController < ApplicationController
     else
       session.delete(:donation_id)
     end
-    # byebug
   end
 
   def create
