@@ -31,14 +31,28 @@ class UsersController < ApplicationController
   def update
     if @current_user.update(user_params)
       flash[:notices] = ["Account updated successfully!"]
-      redirect_to user_home_path
+      redirect_to root_path
     else
       flash[:errors] = ["Account not updated", @current_user.errors.full_messages].flatten
       render :edit
     end
   end
 
+  def confirm_account_deletion
+
+  end
+
   def destroy
+    # byebug
+    if user_params[:password] == @current_user.password
+      @current_user.destroy
+      session.delete(:user_id)
+      flash[:notices] = ["Account deleted"]
+      redirect_to root_path
+    else
+      flash[:errors] = ["Invalid password. Account not deleted"]
+      redirect_to edit_user_path
+    end
   end
 
   private

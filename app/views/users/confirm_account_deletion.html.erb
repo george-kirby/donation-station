@@ -1,0 +1,9 @@
+<h2>Delete account?</h2>
+<br>
+Enter your password to confirm account deletion: 
+<br>
+<%= form_tag delete_user_path, method: :get  do %>
+    <p><%= password_field_tag "user[password]" %></p>
+
+    <%= submit_tag "Yes, I want to delete my account", style: "color: red;" %>
+<% end %>

@@ -11,6 +11,8 @@ class Donation < ApplicationRecord
   validates :category, presence: true
   validates :location, presence: true
 
+  before_destroy :destroy_interests
+
   def username
     self.user.username
   end
@@ -25,6 +27,12 @@ class Donation < ApplicationRecord
 
   def self.most_interests
     all.max_by{|donation| donation.interests.count}
+  end
+
+  private
+
+  def destroy_interests
+    self.interests.destroy_all
   end
 
 end

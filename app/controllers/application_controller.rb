@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    before_action :set_current_user
+    before_action :set_current_user, except: "sessions#destroy"
 
     helper_method :logged_in?
 

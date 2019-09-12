@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'user/my-donations', to: 'donations#current_user_donations', as: :my_donations
   get 'user/my-interests', to: 'donations#current_user_interests', as: :my_interests
   resources :users, only: [:show, :create, :update]
+  get 'user/delete-confirmation', to: 'users#confirm_account_deletion', as: :delete_confirmation
   get 'user/delete', to: 'users#destroy', as: :delete_user
   get 'user/edit', to: 'users#edit', as: :edit_user
   resources :donations

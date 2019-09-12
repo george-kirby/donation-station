@@ -65,7 +65,6 @@ class DonationsController < ApplicationController
   end
 
   def destroy
-    @donation.interests.destroy_all
     @donation.destroy
     redirect_to my_donations_path
   end
