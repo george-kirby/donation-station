@@ -16,7 +16,6 @@ class User < ApplicationRecord
     validates :password, confirmation: { case_sensitive: true}
 
     
-
     def self.usernames
         self.all.map{|user| user.username}
     end

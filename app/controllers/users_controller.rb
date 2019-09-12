@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       flash[:notices] = ["Account created! Please log in"]
       redirect_to login_path
     else
-      flash[:errors] = ["Login failed", @user.errors.full_messages].flatten
+      flash[:errors] = ["Registration failed:", @user.errors.full_messages].flatten
       render :new
     end
   end
