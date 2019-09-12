@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new', as: :register
   get 'user/my-donations', to: 'donations#current_user_donations', as: :my_donations
   get 'user/my-interests', to: 'donations#current_user_interests', as: :my_interests
-  resources :users, except: [:index, :new, :edit]
+  resources :users, only: [:show, :create, :update]
+  get 'user/delete', to: 'users#destroy', as: :delete_user
   get 'user/edit', to: 'users#edit', as: :edit_user
   resources :donations
   resources :interests, only: [:new, :create, :index]

@@ -10,7 +10,7 @@
 <br>
 <p> <strong><%= @location_with_most_donations.name %> London</strong> is the location with the most donations (<%= @location_with_most_donations.donations_count %>) </p>
 <p> <strong><%= @category_with_most_donations.name.capitalize %></strong> is the category with the most donations (<%= @category_with_most_donations.donations_count %>) </p>
-<p> <strong><%= link_to @user_with_most_donations.username, user_path(@user_with_most_donations) %></strong> is the user with the most donations (<%= @user_with_most_donations.donations_count %>) </p>
+<p> <%= @user_with_most_donations == @current_user ? "You are" : (link_to "#{@user_with_most_donations.username} is", user_path(@user_with_most_donations)) %> the user with the most donations (<%= @user_with_most_donations.donations_count %>) </p>
 
 
 <br>

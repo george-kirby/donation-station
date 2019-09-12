@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @donations = @user.my_donations
+    if @user == @current_user
+      redirect_to edit_user_path
+    else
+      @donations = @user.my_donations
+    end
   end
 
   def create
