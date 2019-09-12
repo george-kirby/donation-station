@@ -8,9 +8,9 @@
 <p> <strong>Today's trending donation</strong>: <%= @trending_donation.user == @current_user ? "your" : "#{@trending_donation.username}'s" %> <strong><%= link_to @trending_donation.title, donation_path(@trending_donation) %></strong>, with <%= pluralize(@trending_donation.interests.count, "interest") %>!</p>
 <p>There's a lot of interest in <%= @trending_user == @current_user ? "your" : (link_to "#{@trending_user.username}'s", user_path(@trending_user)) %> donations, with <%= pluralize(@trending_user.interests_received.count, "interest") %> across <%= pluralize(@trending_user.my_donations_with_interest.count, "donation") %>.</p>
 <br>
-<p> <strong><%= @location_with_most_donations.name %> London</strong> is the location with the most donations (<%= @location_with_most_donations.donations_count %>) </p>
-<p> <strong><%= @category_with_most_donations.name.capitalize %></strong> is the category with the most donations (<%= @category_with_most_donations.donations_count %>) </p>
-<p> <%= @user_with_most_donations == @current_user ? "You are" : (link_to "#{@user_with_most_donations.username} is", user_path(@user_with_most_donations)) %> the user with the most donations (<%= @user_with_most_donations.donations_count %>) </p>
+<p> The location with the most donations is <strong><%= @location_with_most_donations.name %> London</strong> (<%= @location_with_most_donations.donations_count %>). </p>
+<p> The category with the most donations is <strong><%= @category_with_most_donations.name.capitalize %></strong> (<%= @category_with_most_donations.donations_count %>). </p>
+<p> The user with the most donations is <%= @user_with_most_donations == @current_user ? "you!" : (link_to @user_with_most_donations.username, user_path(@user_with_most_donations)) %> (<%= @user_with_most_donations.donations_count %>). </p>
 
 
 <br>

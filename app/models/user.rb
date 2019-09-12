@@ -1,10 +1,7 @@
 class User < ApplicationRecord
-    # before_destroy :destroy_donations
-    # before_destroy :destroy_interests
 
     has_many :donations, dependent: :destroy
     has_many :interests, dependent: :destroy
-    # has_many :donations, through: :interests
 
     validates :username, presence: true
     validates :username, uniqueness: true
@@ -60,13 +57,4 @@ class User < ApplicationRecord
         all.max_by{|user| user.interests_received.count}
     end
 
-    private
-
-    def destroy_interests
-        self.interests.destroy_all
-    end
-    
-    def destroy_donations
-        self.donations.destroy_all
-    end
 end
