@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
         if valid_credentials?
             session[:user_id] = User.find_by(username: @username).id
             flash[:notices] = ["Welcome, #{@username}"]
-            redirect_to root_path
+            if session[:donation_id]
+                redirect_to donation_path(session[:donation_id])
+            else
+                redirect_to root_path
+            end
         else
             flash[:errors] = ["Login failed - invalid credentials"]
             redirect_to login_path
@@ -17,6 +21,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        byebug
+        session.delete(:donation_id)
         session.delete(:user_id)
         flash[:notices] = ["Logged out successfully"]
         redirect_to root_path

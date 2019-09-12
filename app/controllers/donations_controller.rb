@@ -30,6 +30,12 @@ class DonationsController < ApplicationController
 
   def show
     @interest = Interest.new
+    if !logged_in?
+      session[:donation_id] = params[:id].to_i
+    else
+      session.delete(:donation_id)
+    end
+    # byebug
   end
 
   def create
