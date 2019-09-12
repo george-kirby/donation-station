@@ -2,7 +2,7 @@
 
 <% if @donations.empty? %>
     <br>
-    <p>You haven't shown interest in any donations yet. </p>
+    <p>You are not showing interest in any donations at the moment. </p>
     <p><%= link_to "Search donations", donations_path %></p>
 <% else %>
   <%= render "donations_display" %>
