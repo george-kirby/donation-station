@@ -25,7 +25,7 @@ angie = User.create(username: "angie", password: "p", phone_number: "07" + 9.tim
 will = User.create(username: "will", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
 polly = User.create(username: "polly", password: "p", phone_number: "07" + 9.times.map{rand(10)}.join)
 
-categories = ["clothing, shoes and accessories", "electronics", "food", "furniture", "home & garden", "sports & outdoors"]
+categories = ["clothing, shoes and accessories", "electronics", "food", "furniture", "homeware", "sports & outdoors"]
 
 categories.each {|category| Category.create(name: category)}
 
@@ -42,7 +42,7 @@ trousers_with_holes = Donation.create(title: "old trousers", description: "so ma
 soup = Donation.create(title: "soup", description: "4 cans of chicken noodle soup. Rails provides me with all the nourishment I need now", category: Category.third, user: oli, location: Location.all[5])
 ps4 = Donation.create(title: "ps4", description: "fully working", category: Category.second, user: sohaib, location: Location.all[4])
 bench = Donation.create(title: "bench", description: "beautiful garden bench", category: Category.fifth, user: joaquin, location: Location.all[5])
-trampoline = Donation.create(title: "trampoline", description: "bouncy", category: Category.all[4], user: erin, location: Location.all[0])
+trampoline = Donation.create(title: "trampoline", description: "bouncy", category: Category.all[5], user: erin, location: Location.all[0])
 freezer = Donation.create(title: "freezer", description: "useful for storing the bodies", category: Category.all[4], user: polly, location: Location.all[4])
 
 bike.picture.attach(io: File.open('/Users/flatiron/Downloads/bike.png'), filename: 'bike.png') 
