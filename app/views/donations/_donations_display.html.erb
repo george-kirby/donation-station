@@ -3,7 +3,11 @@
 <% @donations.each do |donation| %>
     <div class="col-sm-4">
     <div class="card" style="width: 25rem; height: 30rem">
-        <img src="<%=(url_for(donation.picture))%>" class="card-img-top" alt="donation_pic" width=500>
+        <% if donation.picture.attached? %>
+            <img src="<%= (url_for(donation.picture))%>" class="card-img-top" alt="donation_pic" width=500>
+        <% else %>
+            <img src="/Users/flatiron/Downloads/no-image.png" class="card-img-top" alt="no image available for this donation" width=500>
+        <% end %>
         <div class="card-body">
         <h5 class="card-title"><%= donation.title %></h5>
         <p><%= donation.location.name %> - posted by <strong><%= donation.username %></strong></p>
