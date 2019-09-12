@@ -41,7 +41,7 @@ beans = Donation.create(title: "beans", description: "tin of Heinz beans. Sorry,
 trousers_with_holes = Donation.create(title: "old trousers", description: "so many holes", category: Category.first, user: aude, location: Location.all[3])
 soup = Donation.create(title: "soup", description: "4 cans of chicken noodle soup. Rails provides me with all the nourishment I need now", category: Category.third, user: oli, location: Location.all[5])
 ps4 = Donation.create(title: "ps4", description: "fully working", category: Category.second, user: sohaib, location: Location.all[4])
-bench = Donation.create(title: "bench", description: "beautiful garden bench", category: Category.fifth, user: joaquin, location: Location.all[5])
+bench = Donation.create(title: "bench", description: "beautiful garden bench", category: Category.fourth, user: joaquin, location: Location.all[5])
 trampoline = Donation.create(title: "trampoline", description: "bouncy", category: Category.all[5], user: erin, location: Location.all[0])
 freezer = Donation.create(title: "freezer", description: "useful for storing the bodies", category: Category.all[4], user: polly, location: Location.all[4])
 
