@@ -8,6 +8,8 @@ class Donation < ApplicationRecord
 
   validates :user, presence: true
   validates :title, presence: true
+  validates :title, length: {maximum: 20}
+  validates :description, length: {maximum: 1000}
   validates :category, presence: true
   validates :location, presence: true
 
