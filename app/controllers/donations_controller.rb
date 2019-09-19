@@ -3,6 +3,7 @@ class DonationsController < ApplicationController
   before_action :find_donation, only: [:show, :edit, :update, :destroy]
 
   def index
+    session.delete(:donation_id)
     @donations = Donation.all
   end
 
